@@ -1,0 +1,6 @@
+<button
+  *ngFor="let t of generoService.generos$ | async"
+  (click)="generoService.selecionaGenero(t)"
+>
+  {{ t.genero }}
+</button>
