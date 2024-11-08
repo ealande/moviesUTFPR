@@ -11,7 +11,7 @@ router.get("/", (req, res) => {
 router.get("/genero/:genero", (req, res) => {
   const genero = req.params.genero;
   const filteredFilmes = filmes.filter((filme) =>
-    filme.genres.includes(genero),
+    filme.generos.includes(genero),
   );
   res.json(filteredFilmes);
 });

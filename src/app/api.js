@@ -1,13 +1,13 @@
 const express = require("express");
 const app = express();
 const port = 3000;
-
+const cors = require("cors");
 // Import routes
 const generosRoutes = require("./routes/generos");
 const filmesRoutes = require("./routes/filmes");
 
 // Use JSON middleware
-app.use(express.json());
+app.use(cors());
 
 // Define routes
 app.use("/api/generos", generosRoutes);

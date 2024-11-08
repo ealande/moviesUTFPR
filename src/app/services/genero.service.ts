@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, ReplaySubject } from 'rxjs';
+import { map, ReplaySubject, tap } from 'rxjs';
 import { IGeneros } from '../interfaces/generos';
 import { Generos } from '../models/generos';
 
@@ -19,12 +19,9 @@ export class GeneroService {
   constructor() {
     this.httpClient
       .get<IGeneros[]>('http://localhost:3000/api/generos')
+      .pipe(tap(console.log))
       .pipe(
-        map((generosData) =>
-          generosData.map(
-            (g) => new Generos(g.id, g.genero), // Assuming Generos has this constructor
-          ),
-        ),
+        map((generosData) => generosData.map((g: string) => new Generos(g))),
       )
       .subscribe(this._generos$);
   }

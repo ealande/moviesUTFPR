@@ -2,6 +2,10 @@
   display: flex;
 }
 
+h3 {
+  margin-top: 8em;
+}
+
 nav {
   flex: 0 1 10em;
 }

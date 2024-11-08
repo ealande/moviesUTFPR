@@ -2,7 +2,11 @@
   <app-lista-generos></app-lista-generos>
 </nav>
 <main>
-  <app-filmes></app-filmes>
+  @if (generoService.generoSelecionado$ | async; as t) {
+    <app-filmes [generos]="t"></app-filmes>
+  } @else {
+    <h3>Selecione uma categoria</h3>
+  }
 </main>
 
 <router-outlet />
